@@ -1,6 +1,9 @@
 #!/usr/bin/python
 """
 Plane Wave Pair Production - pwpp scripts
+
+References:
+# [1] https://journals.aps.org/pra/abstract/10.1103/PhysRevA.96.022128
 """
 # numpy
 import numpy as np
@@ -42,11 +45,6 @@ class MathTextSciFormatter(mticker.Formatter):
         else:
             s =  r'%s%s' % (significand, exponent)
         return "${}$".format(s)
-
-"""
-References:
-# [1] https://journals.aps.org/pra/abstract/10.1103/PhysRevA.96.022128
-"""
 
 def TErber(chi):
     return 0.16/chi * kv(1/3,4/(3*chi))**2
