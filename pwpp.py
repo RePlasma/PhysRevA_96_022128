@@ -77,12 +77,20 @@ def chicrr(g0,a0,w0,n):
     res = chic(g0,a0,w0,n) / (1+Omega(g0,a0,w0,n)/(2*g0*m)) ;
     return res
 
-def gphi():
+def gf(g0,a0,w0,n):
+    """
+        eq (15) approximate final electron energy
+    """
+    Om = Omega(g0,a0,w0,n)
+    return (2*g0*m-Om)/(2*g0*m+Om) * g0
+    
+def gphi(g0,a0,w0,n,phi):
     """
         eq (16) electron energy assuming "radiated power and χ as functions of phase are approximately Gaussian in form"
     """
     sigma = sigsq(g0,a0,w0,n)
-    return gf + ( g0*Omega/(2*g0*m+Omega) ) * (1+erf((phi-phic)/(sqrt(2)*sigma)))
+    Om = Omega(g0,a0,w0,n)
+    return gf(g0,a0,w0,n) + ( g0*Om/(2*g0*m+Om) ) * (1+erf((phi-phic(g0,a0,w0,n))/(sqrt(2)*sigma)))
 
 def chiphi(g0,a0,w0,n,phi):
     """
